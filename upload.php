@@ -12,22 +12,22 @@
                 </form>
            </td>
        </tr>
-       <tr>
+       <!-- <tr>
            <td>
               <?php
-              global $link;
-              include 'config.php';
-               $query2 = "SELECT * FROM filedownload ";
-               $run2 = mysqli_query($link,$query2);
+              //global $link;
+              //include 'config.php';
+               //$query2 = "SELECT * FROM filedownload ";
+               //$run2 = mysqli_query($link,$query2);
                
-               while($rows = mysqli_fetch_assoc($run2)){
+               //while($rows = mysqli_fetch_assoc($run2)){
                    ?>
                <a href="download.php?file=<?php echo $rows['filename'] ?>">Download</a><br>
                <?php
-               }
+               //}
                ?>
            </td>
-       </tr>
+       </tr> -->
    </table>
 </body>
 </HTML>
