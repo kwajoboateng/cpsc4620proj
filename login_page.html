@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+body {margin:0;}
+
+div {
+  padding-top: 80px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+</style>
+</head>
+
+
+<body>
+
+<ul>
+  <li><a href="login_page.html">Login/Signup</a></li>
+  <li><a href="messaging.php">Messaging</a></li>
+  <li><a href="#mychannel">My Channel</a></li>
+  <li><a href="#upload">Upload</a></li>
+</ul>
+<br><br><br>
+<form action="login.php" method="post">
+  <label for="name">Username:</label><br>
+  <input type ="text" id="name" name="name"><br>
+
+  <label for="pass">Password:</label><br>
+  <input type ="text" id="pass" name="pass"><br>
+
+  <input type="submit" name="submit" value="Login"><br><br>
+
+  <label for="signup_name">Username:</label><br>
+  <input type ="text" id="signup_name" name="signup_name"><br>
+
+  <label for="signup_name">First Name:</label><br>
+  <input type ="text" id="signup_firstname" name="signup_firstname"><br>
+
+  <label for="signup_name">Last Name:</label><br>
+  <input type ="text" id="signup_lastname" name="signup_lastname"><br>
+
+  <label for="phone">Password:</label><br>
+  <input type ="text" id="signup_pass" name="signup_pass"><br>
+
+  <label for="phone">Confirm Password:</label><br>
+  <input type ="text" id="conf_signup_pass" name="conf_signup_pass"><br>
+
+  <input type="submit" name="Signup" value="Signup">
+
+</form>
+</body>
+</html>
