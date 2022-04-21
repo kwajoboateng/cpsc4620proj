@@ -1,0 +1,23 @@
+Software Requirements
+    - Apache 2.0
+    - MySQL
+    - PHP
+    
+Technical Requirements:
+    - Must run on Apache Web Server
+    - 
+
+Tables
+    - User Table
+    - Media Table
+    - Blocklist Table
+    - Channel Table
+    - Comments Table
+    - Keywords Table
+    - Subscriptions Table
+    - Favorites List Table
+    - Outbox Table
+    - Message Table
+    - Discussion Board Table
+    - Subscriptions Table
+    
