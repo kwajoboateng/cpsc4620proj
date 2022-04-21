@@ -46,10 +46,11 @@ li a:hover:not(.active) {
 <body>
 
 <ul>
-  <li><a href="login_page.html">Login/Signup</a></li>
+  <li><a href="index.html">Login/Signup</a></li>
   <li><a href="messaging.php">Messaging</a></li>
   <li><a href="#mychannel">My Channel</a></li>
-  <li><a href="#upload">Upload</a></li>
+  <li><a href="upload.php">Upload</a></li>
+  <li><a href="search.php">Search</a></li>
 </ul>
 
 

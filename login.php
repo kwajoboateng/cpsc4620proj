@@ -75,6 +75,8 @@ require_once('config.php');
     }
 }
 
+header("Location: login_page.html");
+exit();
 
 ?>
 </body>
