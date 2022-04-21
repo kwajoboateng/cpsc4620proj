@@ -1,5 +1,17 @@
+<HTML>
+<body>
+    <?php if (isset($result)) { ?>
+        <h1> Result: <?php echo $result ?></h1>
+    <?php } ?>
+    <form action="" method="post">
+        <input type="text" name="query" placeholder="Search term"/>
+        <input type="submit" value="Search"/>
+    </form>
+</body>
+</HTML>
+
 <?php
-include('config.php');
+
 /*
 Task:
 Search media files based on keywords provided by the user who uploaded the media file. 
@@ -14,58 +26,58 @@ if so, return video files
 
 */
 
-//convert string into an array of searchable terms
-//!you copy and pasted this
-function split($query){
-    $query = trim(preg_replace("/(\s+)+/", " ", $query));
-    $words = array();
-    // expand this list with your words.
-    $list = array("in","it","a","the","of","or","I","you","he","me","us","they","she","to","but","that","this","those","then");
-    $c = 0;
-    foreach(explode(" ", $query) as $key){
-        if (in_array($key, $list)){
-            continue;
-        }
-        $words[] = $key;
-        if ($c >= 15){
-            break;
-        }
-        $c++;
-    }
-    return $words;
-}
-
 //search database for keywords
-function search($query){
-    $query = trim($query);
-    //ensure that the search is not empty
-    if (mb_strlen($query)===0){
-        echo "No results were found.";
-        exit;
-    }
-    //limit the amount of characters that can be searched for to 200
-    $query = subst($query,0,200);
+function search($input){
+    global $link;
+    include 'config.php';
 
-    //convert string into searchable terms
-    $terms = split($query);
+    //if($link == NULL){ echo "It's NULL in function";} else{ echo "It's not NULL in function";}
+
+    $input = trim($input);
+
+    //convert string into array of items
+    $terms = explode(" ", $input);
 
     //compare each word searched to the keywords in the db
     foreach($terms as $i){
         //for each term, search the "keywords" field in the database
-        //if theres a match, add that video to an array
-    }
-    
+        $query = "SELECT * FROM Keywords WHERE keyword = '".$i."'";
+        $response = mysqli_query($link,$query);
+        if(!$response){
+            echo "<h1> We could not find a match. </h1>";
+        }
+        else{
+            //you can use $row = mysqli_fetch_row($response), and each element in row is a value
+            $row = mysqli_fetch_row($response);
+            $keyword_id = $row[0];
+            $media_id = $row[1];
+        }
+        //if theres a match, get that media id
+        //use media id to grab video
+        $query = "SELECT * FROM Media WHERE media_id = ".$media_id;
+        $result = mysqli_query($link,$query);
+        while($row = mysqli_fetch_array($result))
+        {
+           print_r($row);
+        } 
+        while($row = mysqli_fetch_assoc($response)){
+            echo "Here!";
+            $location = $row['file_name'];
+            $name = $row['title'];
+            echo "<div style='float: left; margin-right: 5px;'>
+               <video src='".$location."' controls width='320px' height='320px' ></video>     
+               <br>
+               <span>".$name."</span>
+            </div>";
+        }
+    // Free result set
+    mysqli_free_result($response);
     //print the array of videos
+    }
 }
-?>
 
-<html>
-<body>
-    <center>
-    <form action="/search.php" method="get">
-        <input type="text" name = "search" placeholder="Search for a video"/>
-        <input type="submit" name = "search" />
-    </form>
-    </center>
-</body>
-</html>
+if (isset($_POST['query'])) {
+    $result = search($_POST['query']);
+} 
+
+?>
