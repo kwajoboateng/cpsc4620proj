@@ -4,13 +4,30 @@
     <H3> <a href='playlist.php' target='_blank'>View your playlist!</a> </H3>
     <H3> <a href='favorites.php' target='_blank'>View your favorites!</a> </H3>
     <H3> My Videos </H3>
+    <p> Enter your username to see your uploaded videos! </p>
+
+    <form method="post">
+        <label for="username">Your Username:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <input type="submit" name="button" class="button" value="Submit" />
+    </form>
 </body>
 </HTML>
 
 <?php
+if(array_key_exists('button', $_POST)) {
+    fetchvideos();
+}
+
 function fetchvideos(){
     global $link;
     include 'config.php';
+    
+    if(isset($_POST["username"])){
+        echo "got username";
+        $username = $_POST["username"];
+    }
+    
 
     //search for all videos associated with this user
     $query = "SELECT * FROM Media WHERE username = '".$username."'";
@@ -18,9 +35,8 @@ function fetchvideos(){
     if(!$response){
         echo "You have not uploaded any videos";
     }
-    else{ //! unfinished
+    else{ 
         while($row = mysqli_fetch_assoc($response)){ 
-            foreach($terms as $i){
                 print  //this prints a "card" 
                 "<div class='card'>
                     <div class='container'>
@@ -32,14 +48,12 @@ function fetchvideos(){
                         <a href='comments.php' target='_blank'>Leave a comment!</a>
                     </div>
                 </div>";
-            }
             
         }
     }
 }
 
 //view your own channel
-fetch
 
 //link to playlists
 //link to favorites

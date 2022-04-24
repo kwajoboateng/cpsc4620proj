@@ -44,7 +44,7 @@ function search($input){
         $query = "SELECT * FROM Keywords WHERE keyword = '".$i."'";
         $response = mysqli_query($link,$query);
         if(!$response){
-            echo "<h1> We could not find a match. </h1>";
+            echo "<h1> We could not find a keyword match. </h1>";
         }
         else{
             //you can use $row = mysqli_fetch_row($response), and each element in row is a value
@@ -56,8 +56,9 @@ function search($input){
             //use media id to grab video
             $query = "SELECT * FROM Media WHERE media_id = ".$media_id."";
             $result = mysqli_query($link,$query);
-
-            while($row = mysqli_fetch_assoc($result)){ 
+            if(!$result) { echo "<h1> We could not find a media match. </h1>";}
+            while($row = mysqli_fetch_assoc($result)){
+                echo "Here 2!"; 
                 //$category = $row['category'];
                 print  //this prints a "card" 
                 "<div class='card'>
