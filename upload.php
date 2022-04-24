@@ -16,7 +16,7 @@
         <option value="Fashion & Beauty">Fashion & Beauty</option>
     </select>
     <br>
-
+    //!make this a required field
     <label for="username">Your Username:</label><br>
     <input type="text" id="username" name="username"><br>
 
