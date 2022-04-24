@@ -36,6 +36,8 @@ function fetchvideos(){
         echo "You have not uploaded any videos";
     }
     else{ 
+        //! Gotta figure out how to loop through the row variable to get every video
+        //! that is returned (if multiple are returned)
         while($row = mysqli_fetch_assoc($response)){ 
                 print  //this prints a "card" 
                 "<div class='card'>
@@ -52,9 +54,4 @@ function fetchvideos(){
         }
     }
 }
-
-//view your own channel
-
-//link to playlists
-//link to favorites
 ?>
