@@ -16,7 +16,6 @@
         <option value="Fashion & Beauty">Fashion & Beauty</option>
     </select>
     <br>
-    //!make this a required field
     <label for="username">Your Username:</label><br>
     <input type="text" id="username" name="username"><br>
 
@@ -120,13 +119,17 @@ if ($uploadOk == 0) {
   if(!$response){
     echo "Insert to comments table has failed\n";
     }
+  // Free result set
+  mysqli_free_result($response);
 
   //save to keywords table
   $query = "INSERT INTO Keywords (keyword_id, media_id, keyword) VALUES (".$keywordid.",".$mediaid.",'".$keyword_input."')";
   $response = mysqli_query($link,$query);
   if(!$response){
     echo "Insert to keywords table has failed\n";
-    }
+  }
+  // Free result set
+  mysqli_free_result($response);
 
 
   //save to media table
@@ -139,9 +142,11 @@ if ($uploadOk == 0) {
 
   if(!$response){
     echo "Insert to media table has failed\n";
-    }
-    else{
+  }
+  else{
     echo "insert to media table was successful!\n";
-    }
+  }
+  // Free result set
+  mysqli_free_result($response);
 }
 ?>

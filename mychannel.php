@@ -24,7 +24,6 @@ function fetchvideos(){
     include 'config.php';
     
     if(isset($_POST["username"])){
-        echo "got username";
         $username = $_POST["username"];
     }
     
