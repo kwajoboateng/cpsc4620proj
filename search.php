@@ -51,24 +51,27 @@ function search($input){
             $row = mysqli_fetch_row($response);
             $keyword_id = $row[0];
             $media_id = $row[1];
-        }
-        //if theres a match, get that media id
-        //use media id to grab video
-        $query = "SELECT * FROM Media WHERE media_id = ".$media_id;
-        $result = mysqli_query($link,$query);
-        while($row = mysqli_fetch_array($result))
-        {
-           print_r($row);
-        } 
-        while($row = mysqli_fetch_assoc($response)){
-            echo "Here!";
-            $location = $row['file_name'];
-            $name = $row['title'];
-            echo "<div style='float: left; margin-right: 5px;'>
-               <video src='".$location."' controls width='320px' height='320px' ></video>     
-               <br>
-               <span>".$name."</span>
-            </div>";
+
+            //if theres a match, get that media id
+            //use media id to grab video
+            $query = "SELECT * FROM Media WHERE media_id = ".$media_id."";
+            $result = mysqli_query($link,$query);
+
+            while($row = mysqli_fetch_assoc($result)){ 
+                //$category = $row['category'];
+                print  //this prints a "card" 
+                "<div class='card'>
+                    <div class='container'>
+                        <h4><b>".$row['title']."</b></h4> 
+                        <p>".$row['media_description']."</p>
+                        <video width='320' height='240' controls>
+                            <source src=".$row['file_name']." type='video/mp4'>
+                        </video>
+                        <a href='comments.php' target='_blank'>Leave a comment!</a>
+                    </div>
+                </div>";
+                
+            }
         }
     // Free result set
     mysqli_free_result($response);
