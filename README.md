@@ -1,8 +1,11 @@
 # cpsc4620 MeTube
 Kwajo Boateng, Carson Coker, Calvin Aduma
 
+Our team created our own version of YouTube called MeTube. In addition to YouTube's capabilites, a user can upload videos, images, and audio files onto their channel; they can also download any uploaded files from channels, if given the permission, onto their device. A guest on the website will have similar but not all the access that a user can have on our website. All together, MeTube is the future!
+
 Webiste: PHP, HTML, CSS
 Database: SQL
+Other technologies used: phpMyAdmin
 
 Instructions to begin using MeTube:
   1) Download .php files into your specified folder
@@ -19,6 +22,7 @@ MeTube:
     - create channel
     - create playlist
     - create unique username
+    - update personal information
     - search for media by keywords
     - view public media uploaded by other users
     - upload/download/remove media to/from playlist
