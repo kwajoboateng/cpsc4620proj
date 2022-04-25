@@ -1,7 +1,7 @@
 # cpsc4620 MeTube
 Kwajo Boateng, Carson Coker, Calvin Aduma
 
-Our team created our own version of YouTube called MeTube. In addition to YouTube's capabilites, a user can upload videos, images, and audio files onto their channel; they can also download any uploaded files from channels, if given the permission, onto their device. A guest on the website will have similar but not all the access that a user can have on our website. All together, MeTube is the future!
+The team created our own version of YouTube called MeTube. In addition to YouTube's capabilites, a user can upload videos, images, and audio files onto their channel; they can also download any uploaded files from channels, if given the permission, onto their device. A guest on the website will have similar but not all the access that a user can have on our website. All together, MeTube is the future!
 
 Webiste: PHP, HTML, CSS
 Database: SQL
