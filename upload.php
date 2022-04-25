@@ -153,7 +153,7 @@ if ($uploadOk == 0) {
     <input type="text" id="keyword" name="keyword"><br>
 
   
-    <label for="selected_file">Select image to upload:</label><br>
+    <label for="selected_file">Select file to upload:</label><br>
     <input type="file" name="selected_file" id="selected_file">
     <input type="submit" value="Upload Image" name="submit">
 </form>
