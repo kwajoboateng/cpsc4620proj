@@ -1,3 +1,4 @@
+<?php require_once('navbar.php'); ?>
 <HTML>
 <body>
     <?php if (isset($result)) { ?>

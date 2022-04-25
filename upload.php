@@ -2,13 +2,13 @@
 global $link;
 include 'config.php';
 include 'find_user_info.php';
-
+require_once('navbar.php');
 $destination_dir = "uploads/";
 
 if (isset($_FILES["selected_file"])){
   $userfile = $destination_dir . basename($_FILES["selected_file"]["name"]);
 } else { 
-  echo "It broke here";
+  echo "NOTICE: A file has not yet been selected\n";
 }
 
 $uploadOk = 1;

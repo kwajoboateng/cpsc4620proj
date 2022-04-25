@@ -1,3 +1,4 @@
+<?php require_once('navbar.php'); ?>
 <HTML>
 <body>
     <H1> My Channel </H1>
