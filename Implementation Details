@@ -5,7 +5,7 @@ Software Requirements
     
 Technical Requirements:
     - Must run on Apache Web Server
-    - 
+    - Tested on Clemson University Web App server
 
 Tables
     - User Table
