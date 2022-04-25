@@ -1,50 +1,20 @@
-<HTML>
-<head> 
-    <title> Upload a File! </title>
-</head>
-<body>
-<H1> Uplaod your File: </H1>
-<form action="upload.php" method="post" enctype="multipart/form-data">
-    <label for="category">Category:</label><br>
-    <select name="category" id="category">
-        <option value="Music">Music</option>
-        <option value="Sports">Sports</option>
-        <option value="Learning">Learning</option>
-        <option value="Movies & Shows">Movies & Shows</option>
-        <option value="Gaming">Gaming</option>
-        <option value="News">News</option>
-        <option value="Fashion & Beauty">Fashion & Beauty</option>
-    </select>
-    <br>
-    <label for="username">Your Username:</label><br>
-    <input type="text" id="username" name="username"><br>
-
-    <label for="title">Title:</label><br>
-    <input type="text" id="title" name="title"><br>
-
-    <label for="description">Description:</label><br>
-    <input type="text" id="description" name="description"><br>
-
-    <label for="keyword">Keyword:</label><br>
-    <input type="text" id="keyword" name="keyword"><br>
-
-  
-    <label for="file">Select image to upload:</label><br>
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
-</form>
-
-</body>
-</HTML>
-
 <?php
 global $link;
 include 'config.php';
 include 'find_user_info.php';
+
 $destination_dir = "uploads/";
-$userfile = $destination_dir . basename($_FILES["fileToUpload"]["name"]);  
+
+if (isset($_FILES["selected_file"])){
+  $userfile = $destination_dir . basename($_FILES["selected_file"]["name"]);
+} else { 
+  echo "It broke here";
+}
+
 $uploadOk = 1;
 $FileType = strtolower(pathinfo($userfile,PATHINFO_EXTENSION));
+
+//create new directory if needed
 
 //get value of category
 if(isset($_POST["category"])){
@@ -83,7 +53,7 @@ if (file_exists($userfile)) {
 }
 
 // If file size is larger than a gigabyte
-if ($_FILES["fileToUpload"]["size"] > 1000000000) {
+if ($_FILES["selected_file"]["size"] > 1000000000) {
   echo "Sorry, your file is too large.\n";
   $uploadOk = 0;
 }
@@ -99,8 +69,8 @@ if ($uploadOk == 0) {
   echo "Sorry, your file was not uploaded.\n";
 // otherwise, upload the file
 } else {
-  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $userfile)) {
-    echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.\n";
+  if (move_uploaded_file($_FILES["selected_file"]["tmp_name"], $userfile)) {
+    echo "The file ". htmlspecialchars( basename( $_FILES["selected_file"]["name"])). " has been uploaded.\n";
   } else {
     echo "Sorry, there was an error uploading your file.\n";
   }
@@ -120,7 +90,7 @@ if ($uploadOk == 0) {
     echo "Insert to comments table has failed\n";
     }
   // Free result set
-  mysqli_free_result($response);
+  // mysqli_free_result($response);
 
   //save to keywords table
   $query = "INSERT INTO Keywords (keyword_id, media_id, keyword) VALUES (".$keywordid.",".$mediaid.",'".$keyword_input."')";
@@ -129,7 +99,7 @@ if ($uploadOk == 0) {
     echo "Insert to keywords table has failed\n";
   }
   // Free result set
-  mysqli_free_result($response);
+  // mysqli_free_result($response);
 
 
   //save to media table
@@ -147,6 +117,46 @@ if ($uploadOk == 0) {
     echo "insert to media table was successful!\n";
   }
   // Free result set
-  mysqli_free_result($response);
+  // mysqli_free_result($response);
+  exit();
 }
 ?>
+
+<HTML>
+<head> 
+    <title> Upload a File! </title>
+</head>
+<body>
+<H1> Uplaod your File: </H1>
+<form action="upload.php" method="post" enctype="multipart/form-data">
+    <label for="category">Category:</label><br>
+    <select name="category" id="category">
+        <option value="Music">Music</option>
+        <option value="Sports">Sports</option>
+        <option value="Learning">Learning</option>
+        <option value="Movies & Shows">Movies & Shows</option>
+        <option value="Gaming">Gaming</option>
+        <option value="News">News</option>
+        <option value="Fashion & Beauty">Fashion & Beauty</option>
+    </select>
+    <br>
+    <label for="username">Your Username:</label><br>
+    <input type="text" id="username" name="username"><br>
+
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title"><br>
+
+    <label for="description">Description:</label><br>
+    <input type="text" id="description" name="description"><br>
+
+    <label for="keyword">Keyword:</label><br>
+    <input type="text" id="keyword" name="keyword"><br>
+
+  
+    <label for="selected_file">Select image to upload:</label><br>
+    <input type="file" name="selected_file" id="selected_file">
+    <input type="submit" value="Upload Image" name="submit">
+</form>
+
+</body>
+</HTML>

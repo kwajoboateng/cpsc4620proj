@@ -26,6 +26,9 @@ function fetchvideos(){
     }
     
 
+    //go to playlist table, find list of media ids
+    //display each media id
+
     //search for all playlists videos (gotta change the query below)
     $query = "SELECT * FROM Media WHERE username = '".$username."'";
     $response = mysqli_query($link,$query);
@@ -33,8 +36,6 @@ function fetchvideos(){
         echo "You have not added any videos to your playlist";
     }
     else{ 
-        //! Gotta figure out how to loop through the row variable to get every video
-        //! that is returned (if multiple are returned)
         while($row = mysqli_fetch_assoc($response)){ 
                 print  //this prints a "card" 
                 "<div class='card'>

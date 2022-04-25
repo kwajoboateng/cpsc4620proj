@@ -1,7 +1,6 @@
 <HTML>
 <body>
     <H1> Browse Metube </H1>
-    <p> Enter your username to see your uploaded videos! </p>
 </body>
 </HTML>
 
@@ -16,8 +15,6 @@
         echo "There are no videos available";
     }
     else{ 
-        //! Gotta figure out how to loop through the row variable to get every video
-        //! that is returned (if multiple are returned)
         while($row = mysqli_fetch_assoc($response)){ 
                 print  //this prints a "card" 
                 "<div class='card'>
