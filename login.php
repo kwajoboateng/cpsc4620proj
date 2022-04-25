@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <html>
 <head>
 <title>Login</title>
@@ -9,7 +5,7 @@ session_start();
 
 <body>
 <?php
-//session_start();
+session_start();
 require_once('config.php');
 
 
@@ -70,8 +66,6 @@ require_once('config.php');
         $_SESSION['use'] = $id;
 
         echo "<p>Signup Successful!</p>";
-        //set session variable
-        //$_SESSION["loggedin"] = "true";
 
       }
       else{
@@ -81,7 +75,7 @@ require_once('config.php');
     }
 }
 
-header("Location: login_page.html");
+header("Location: index.php");
 exit();
 
 ?>

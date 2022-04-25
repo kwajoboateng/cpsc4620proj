@@ -1,54 +1,45 @@
-<HTML>
-<body>
-    <H1> My Favorites </H1>
-    <p> Enter your username to see your favorites! </p>
+<!DOCTYPE html>
+<html>
+<head>
 
-    <form method="post">
-        <label for="username">Your Username:</label><br>
-        <input type="text" id="username" name="username"><br>
-        <input type="submit" name="button" class="button" value="Submit" />
-    </form>
-</body>
-</HTML>
+
+</head>
+
+
+<body>
 
 <?php
-if(array_key_exists('button', $_POST)) {
-    fetchvideos();
-}
 
-function fetchvideos(){
-    global $link;
-    include 'config.php';
-    
-    if(isset($_POST["username"])){
-        echo "got username";
-        $username = $_POST["username"];
-    }
-    
+  require_once('navbar.php');
+  require_once('config.php');
 
-    //search for all videos in favorites table (gotta change the query below)
-    $query = "SELECT * FROM Media WHERE username = '".$username."'";
-    $response = mysqli_query($link,$query);
-    if(!$response){
-        echo "You have not added any videos to your playlist";
-    }
-    else{ 
-        //! Gotta figure out how to loop through the row variable to get every video
-        //! that is returned (if multiple are returned)
-        while($row = mysqli_fetch_assoc($response)){ 
-                print  //this prints a "card" 
+  if(!empty($_SESSION['use'])){
+    $query = "SELECT * FROM Favorites_List WHERE user_id = " . $_SESSION['use'];
+    $response1 = mysqli_query($link, $query);
+
+    if($response){
+      while($row1 = mysqli_fetch_array($response1)){
+        $query = "SELECT * FROM Media WHERE media_id = " . $row['media_id'];
+        $response2 = mysqli_query($link, $query);
+        while($row2 = mysqli_fetch_array($response2)){
+                print  //this prints a "card"
                 "<div class='card'>
                     <div class='container'>
-                        <h4><b>".$row['title']."</b></h4> 
-                        <p>".$row['media_description']."</p>
+                        <h4><b>".$row2['title']."</b></h4>
+                        <p>".$row2['media_description']."</p>
                         <video width='320' height='240' controls>
-                            <source src=".$row['file_name']." type='video/mp4'>
+                            <source src=".$row2['file_name']." type='video/mp4'>
                         </video>
                         <a href='comments.php' target='_blank'>Leave a comment!</a>
                     </div>
                 </div>";
-            
-        }
+
+              }
+          }
     }
-}
+    else{
+      echo '<p>You have no favorited videos </p>';
+    }
+  }
+
 ?>
