@@ -15,6 +15,32 @@ Instructions to begin using MeTube:
   5) Create account with MeTube
   6) Take full functionality of MeTube
   
+Manual:
+  1) Log-in/Register Account:
+    - Click Sign-In to create an account
+      - A confirmation email will be sent to the email provided.
+  2) Search
+    - Use navigation bar at the top of the webpage to searh for any media
+  3) Upload
+    - Select upload button to upload media
+      - Enter all necessary information to complete upload
+  4) Create Channel/Playlist
+    - Log-in if not already
+    - Select create channel/playlist
+      - Enter all necessary information to complete creating channel/playlist
+  5) Change Account Information
+    - Go to Account page and click Edit
+    - When finished press Save
+  6) Commenting
+    - Go to a media file and locate the comment box at the bottom of video.
+    - Type a comment then submit
+  7) Favorite Videos
+    - Go to your account page and at the bottom will show the favorited videos.
+  8) Message other Users
+    - Click messages
+    - Type name of person who you want to send message to
+    - Type message then send.
+  
 MeTube:
   - Features:
     - 3 types of media: Video, Image, Audio
